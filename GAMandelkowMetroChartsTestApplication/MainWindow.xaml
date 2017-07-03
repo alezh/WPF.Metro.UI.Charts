@@ -1,0 +1,292 @@
+﻿<Window x:Class="GAMandelkowMetroChartsTestApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="1037.91" Width="1479.104"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        xmlns:charts="clr-namespace:GravityApps.Mandelkow.MetroCharts;assembly=GravityApps.Mandelkow.MetroCharts"
+        WindowStartupLocation="CenterScreen" ScrollViewer.CanContentScroll="True">
+    <Grid Margin="0" ScrollViewer.CanContentScroll="True" Height="1004" Width="1471">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="120" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0" Margin="0">
+            <StackPanel Orientation="Vertical" Background="#FFE4E4E4" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        CanVerticallyScroll="True" ScrollViewer.CanContentScroll="True">
+                <TextBlock Style="{StaticResource LargeTitleStyle}" Margin="20,10,0,0">
+                    <Run Text="GravityApps-Mandelkow Metro Charts Demo" />
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <TextBlock Style="{StaticResource MediumTitleStyle}" Margin="20,0,0,0" VerticalAlignment="Bottom">
+                        <Run Text="Main charts by Torsten Mandlekow" />
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource SmallTitleStyle}" VerticalAlignment="Top" Margin="5,5,0,0">
+                        <Run Text="(www.modernuicharts.codeplex.com)" />
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource MediumTitleStyle}" VerticalAlignment="Bottom">
+                        <Run Text=" " />
+                        <Run Text="Multiple-series charts and updates to clustered column chart by GravityApps" />
+                    </TextBlock>
+                </StackPanel>
+                <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0" DataContext="{Binding}" >
+
+                    <charts:ClusteredColumnChart Style="{StaticResource MinimalChartStyle}" 
+                                                  ChartTitle="Clustered Column Chart"
+                                                  ChartSubTitle="Single Series - Now supports negative numbers"
+                                                  SelectedItem="{Binding selectedItem, Mode=TwoWay}"
+                                                  Width="400" Height="400">
+                        <charts:ClusteredColumnChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ItemsSource="{Binding scatterData2.Items}"
+                                ValueMember="amount" />
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+
+
+                    <charts:ClusteredColumnChart Style="{StaticResource MinimalChartStyle}" 
+                                                  ChartTitle="Clustered Column Chart"
+                                                  ChartSubTitle="Multi-Series"
+                                                  SelectedItem="{Binding selectedItem, Mode=TwoWay}"
+                                                  Width="500" Height="400">
+                        <charts:ClusteredColumnChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData.seriesDisplayName}"
+                                DisplayMember="date"
+                                ItemsSource="{Binding scatterData.Items}"
+                                ValueMember="amount" />
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData1.seriesDisplayName}"
+                                DisplayMember="date"
+                                ItemsSource="{Binding scatterData1.Items}"
+                                ValueMember="amount" />
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+
+                    <charts:PieChart
+                        Style="{StaticResource MinimalChartStyle}"
+                        
+                        ChartTitle="Pie Chart"
+                        ChartSubTitle="Standard Mandelkow Pie Chart"
+                        SelectedItem="{Binding selectedItem, Mode=TwoWay}"
+                        Width="350" Height="400">
+                        <charts:PieChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData2.Items}" />
+                        </charts:PieChart.Series>
+                    </charts:PieChart>
+
+
+                    <charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"
+                                                       Width="400" Height="400"
+                                                       DataContext="{Binding ''}"
+                                                       ChartTitle="GA Multiple Series Type Chart"
+                                                       ChartSubTitle="Single Column Series"
+                                                       IsRowColumnSwitched="{Binding seriesSwitched}"
+                                                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                       SelectedItem="{Binding selectedItem, Mode=TwoWay}">
+
+                        <charts:GAMultipleTypeSeriesChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData3.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData3.Items}"
+                                DataPointType="charts:GAColumnPiece" />
+
+                        </charts:GAMultipleTypeSeriesChart.Series>
+                    </charts:GAMultipleTypeSeriesChart>
+
+                    <charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"
+                                                       Width="400" Height="400"
+                                                       DataContext="{Binding ''}"
+                                                       ChartTitle="GA Multiple Series Type Chart"
+                                                       ChartSubTitle="Series overlap - column, scatter, line, custom"
+                                                       IsRowColumnSwitched="{Binding seriesSwitched}"
+                                                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                       SelectedItem="{Binding selectedItem, Mode=TwoWay}">
+
+                        <charts:GAMultipleTypeSeriesChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="Target Line"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData.Items}"
+                                DataPointType="{x:Type charts:GAColumnPiece}" />
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData1.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData.Items}"
+                                DataPointType="{x:Type charts:GAScatterPiece}" />
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData.Items}"
+                                DataPointType="{x:Type charts:GALinePiece}"
+                                RelativeSeriesColour="Previous"
+                                SeriesLegendVisibilty="Collapsed" />
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData2.Items}"
+                                DataPointType="{x:Type charts:GAScatterPiece}"
+                                DataPointStyle="{StaticResource RectangleFilledStyle}" />
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData3.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData3.Items}"
+                                DataPointType="{x:Type charts:GALinePiece}" />
+                        </charts:GAMultipleTypeSeriesChart.Series>
+                    </charts:GAMultipleTypeSeriesChart>
+
+                    <charts:RadialGaugeChart
+                        Style="{StaticResource MinimalChartStyle}"
+                        
+                        ChartTitle="Guage Chart"
+                        ChartSubTitle="Standard Mandelkow Guage Chart"
+                        Height="400" Width="400">
+                        <charts:RadialGaugeChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding radialSeries.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding radialSeries.Items}" />
+                        </charts:RadialGaugeChart.Series>
+                    </charts:RadialGaugeChart>
+
+
+                    <charts:StackedColumnChart Style="{StaticResource MinimalChartStyle}" 
+                                                ChartTitle="Stacked Column Chart"
+                                                ChartSubTitle="Doesnt support negative numbers"
+                                                Height="400">
+                        <charts:StackedColumnChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData2.Items}" />
+                        </charts:StackedColumnChart.Series>
+                    </charts:StackedColumnChart>
+
+                    <charts:StackedColumn100Chart Style="{StaticResource MinimalChartStyle}" 
+                                                   ChartTitle="Stacked Column 100% Chart"
+                                                   ChartSubTitle="Doesnt support negative numbers"
+                                                   Height="400">
+                        <charts:StackedColumn100Chart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData2.Items}" />
+                        </charts:StackedColumn100Chart.Series>
+                    </charts:StackedColumn100Chart>
+
+                    <charts:ClusteredBarChart Style="{StaticResource MinimalChartStyle}" 
+                                               ChartTitle="Clustered Bar Chart"
+                                               ChartSubTitle="Single Series - Doesnt support negative numbers"
+                                               SelectedItem="{Binding selectedItem, Mode=TwoWay}"
+                                               Width="400" Height="400">
+                        <charts:ClusteredBarChart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ItemsSource="{Binding scatterData2.Items}"
+                                ValueMember="amount" />
+                        </charts:ClusteredBarChart.Series>
+                    </charts:ClusteredBarChart>
+
+
+                    <charts:StackedBar100Chart Style="{StaticResource MinimalChartStyle}" 
+                                                ChartTitle="Stacked Bar 100% Chart"
+                                                ChartSubTitle="Doesnt support negative numbers">
+                        <charts:StackedBar100Chart.Series>
+                            <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
+                                DisplayMember="date"
+                                ValueMember="amount"
+                                ItemsSource="{Binding scatterData2.Items}" />
+                        </charts:StackedBar100Chart.Series>
+                    </charts:StackedBar100Chart>
+
+                </WrapPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,0,0">
+            <TextBlock Style="{StaticResource MediumTitleStyle}" HorizontalAlignment="Center">
+                <Run Text="Setting" />
+            </TextBlock>
+            <ListView ItemsSource="{Binding scatterData.Items}" Height="243">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="55 " />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding date}" />
+                            <TextBox Grid.Column="1" Text="{Binding amount}" HorizontalContentAlignment="Right" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+            <ListView ItemsSource="{Binding scatterData2.Items}" Height="243">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55 " />
+                                <ColumnDefinition Width="55" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding date}" />
+                            <TextBox Grid.Column="1" Text="{Binding amount}" HorizontalContentAlignment="Right" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ListView ItemsSource="{Binding scatterData1.Items}" Height="243">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55" />
+                                <ColumnDefinition Width="55" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding date}" />
+                            <TextBox Grid.Column="1" Text="{Binding amount}" HorizontalContentAlignment="Right" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackPanel>
+
+
+    </Grid>
+
+</Window>
