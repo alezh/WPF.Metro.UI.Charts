@@ -683,7 +683,8 @@
                         </local:FadingListView.ItemsPanel>
                         <local:FadingListView.ItemTemplate>
                             <DataTemplate>
-                                <local:ColumnPiece
+                                <local:ColumnPiece 
+                                    Margin="2,0"
                                     Background="{Binding Path=ItemBrush}"  
                                     SelectedBrush="{Binding Path=SelectedBrush}"  
                                     Percentage="{Binding Path=PercentageFromMaxDataPointValue}"
