@@ -85,6 +85,20 @@ namespace GAMandelkowMetroChartsTestApplication.ViewModels
                 }
             }
         }
+        private GraphSeriesInformation _scatterData4;
+
+        public GraphSeriesInformation scatterData4
+        {
+            get { return _scatterData4; }
+            set
+            {
+                if (_scatterData4 != value)
+                {
+                    _scatterData4 = value;
+                    RaisePropertyChanged("scatterData4");
+                }
+            }
+        }
 
         private GraphSeriesInformation _radialSeries;
 
@@ -183,13 +197,27 @@ namespace GAMandelkowMetroChartsTestApplication.ViewModels
             scatterData2.Items.Add(new GraphSeriesDataPoint("sun", 10));
 
             scatterData3 = new GraphSeriesInformation {seriesDisplayName = "Series 4"};
-            scatterData3.Items.Add(new GraphSeriesDataPoint("mon", 1));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("tue", -6));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("wed", 18));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("thur", -8));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("fri", 0));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("sat", -6));
-            scatterData3.Items.Add(new GraphSeriesDataPoint("sun", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("1", 1));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("2", 10));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("3", 18));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("4", 10));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("5", 5));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("6", 10));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("7", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("8", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("9", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("10", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("11", 20));
+            scatterData3.Items.Add(new GraphSeriesDataPoint("12", 20));
+
+            scatterData4 = new GraphSeriesInformation { seriesDisplayName = "Series 5" };
+            scatterData4.Items.Add(new GraphSeriesDataPoint("mon", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("tue", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("wed", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("thur", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("fri", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("sat", 420));
+            scatterData4.Items.Add(new GraphSeriesDataPoint("sun", 420));
 
 
             radialSeries = new GraphSeriesInformation {seriesDisplayName = "Value"};

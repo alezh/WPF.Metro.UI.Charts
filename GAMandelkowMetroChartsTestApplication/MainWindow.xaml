@@ -97,8 +97,7 @@
                                 DisplayMember="date"
                                 ValueMember="amount"
                                 ItemsSource="{Binding scatterData3.Items}"
-                                DataPointType="charts:GAColumnPiece" />
-
+                                DataPointType="charts:GAColumnPiece" />                            
                         </charts:GAMultipleTypeSeriesChart.Series>
                     </charts:GAMultipleTypeSeriesChart>
 

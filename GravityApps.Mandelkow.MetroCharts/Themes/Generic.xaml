@@ -1929,6 +1929,7 @@
                                     ParentChart="{Binding Path=ParentChart}"
                                     DataPointGroupIndex ="{Binding Path=DataPointGroupIndex}"
                                     DataPointIndex ="{Binding Path=DataPointIndex}"
+                                    Margin="2,0"
                                     >
                     </local:GAMultiPiece>
                 </DataTemplate>
