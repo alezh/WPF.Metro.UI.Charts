@@ -66,6 +66,17 @@ namespace PowerManage.ViewModels
         {
             SwitchSeries = new RelayCommand(switchSeries);
             seriesSwitched = false;
+
+            scatterData = new Batteries { BatteryName = "sjdh" };
+            scatterData.Items.Add(new Electricity("1", 390));
+            scatterData.Items.Add(new Electricity("2", 0));
+            scatterData.Items.Add(new Electricity("3", 0));
+            scatterData.Items.Add(new Electricity("5", 0));
+            scatterData.Items.Add(new Electricity("6", 0));
+            scatterData.Items.Add(new Electricity("7", 0));
+            scatterData.Items.Add(new Electricity("8", 0));
+            scatterData.Items.Add(new Electricity("9", 0));
+
         }        
     }
 }

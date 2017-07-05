@@ -13,7 +13,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Column="0" Margin="0">
+        <charts:ClusteredColumnChart Style="{StaticResource MinimalChartStyle}" 
+                                                  ChartTitle="Clustered Column Chart"
+                                                  Width="600" Height="400">
+            <charts:ClusteredColumnChart.Series>
+                <charts:ChartSeries
+                                SeriesTitle="{Binding ScatterData.SeriesDisplayName}"
+                                DisplayMember="Date"
+                                ItemsSource="{Binding ScatterData.Items}"
+                                ValueMember="Amount" />
+                <charts:ChartSeries
+                                SeriesTitle="{Binding ScatterData1.SeriesDisplayName}"
+                                DisplayMember="Date"
+                                ItemsSource="{Binding ScatterData1.Items}"
+                                ValueMember="Amount" />
+            </charts:ClusteredColumnChart.Series>
+        </charts:ClusteredColumnChart>
+        <!--<ScrollViewer Grid.Column="0" Margin="0">
             <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0" DataContext="{Binding}" >
 
                 <charts:ClusteredColumnChart Style="{StaticResource MinimalChartStyle}" 
@@ -201,6 +217,6 @@
                 
                 
             </WrapPanel>
-        </ScrollViewer>
+        </ScrollViewer>-->
     </Grid>
 </Window>

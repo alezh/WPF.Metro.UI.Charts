@@ -65,23 +65,6 @@
                         </charts:ClusteredColumnChart.Series>
                     </charts:ClusteredColumnChart>
 
-                    <charts:PieChart
-                        Style="{StaticResource MinimalChartStyle}"
-                        
-                        ChartTitle="Pie Chart"
-                        ChartSubTitle="Standard Mandelkow Pie Chart"
-                        SelectedItem="{Binding selectedItem, Mode=TwoWay}"
-                        Width="350" Height="400">
-                        <charts:PieChart.Series>
-                            <charts:ChartSeries
-                                SeriesTitle="{Binding scatterData2.seriesDisplayName}"
-                                DisplayMember="date"
-                                ValueMember="amount"
-                                ItemsSource="{Binding scatterData2.Items}" />
-                        </charts:PieChart.Series>
-                    </charts:PieChart>
-
-
                     <charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"
                                                        Width="400" Height="400"
                                                        DataContext="{Binding ''}"
@@ -217,6 +200,7 @@
                     </charts:StackedBar100Chart>
 
                 </WrapPanel>
+               
 
             </StackPanel>
         </ScrollViewer>

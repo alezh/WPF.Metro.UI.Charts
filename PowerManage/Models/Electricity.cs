@@ -9,31 +9,31 @@ namespace PowerManage.Models
 {
     public class Electricity : ViewModelBase
     {
-        private Double? _Voltage;
+        private int? _voltage;
         /// <summary>
         /// 电压
         /// </summary>
-        public Double? Voltage
+        public int? voltage
         {
             get
             {
-                return _Voltage;
+                return _voltage;
             }
             set
             {
-                if (_Voltage != value)
+                if (_voltage != value)
                 {
-                    _Voltage = value;
-                    RaisePropertyChanged("Voltage");
+                    _voltage = value;
+                    RaisePropertyChanged("voltage");
                 }
             }
         }
 
-        private int? _sn;
+        private string _sn;
         /// <summary>
         /// 电池序号
         /// </summary>
-        public int? sn
+        public string sn
         {
             get
             {
@@ -49,9 +49,9 @@ namespace PowerManage.Models
             }
         }
 
-        public Electricity(int sn,double Voltage)
+        public Electricity(string sn,int? Voltage)
         {
-            this.Voltage = Voltage;
+            voltage = Voltage;
             this.sn      = sn;
         }
 

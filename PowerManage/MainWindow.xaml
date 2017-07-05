@@ -12,7 +12,7 @@
                       DataContext="{Binding Main, Source={StaticResource Locator}}"
                       Height="600"
                       Width="800">
-    <Grid Margin="0">
+    <Grid Margin="0" Height="Auto" Width="Auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="691*"/>
             <ColumnDefinition Width="101*"/>
@@ -21,7 +21,24 @@
             <RowDefinition Height="89*"/>
             <RowDefinition Height="480*"/>
         </Grid.RowDefinitions>
-        
+
+        <charts:GAMultipleTypeSeriesChart Margin="10" 
+                                          Grid.Row="1"
+                                          DataContext="{Binding ''}"
+                                          ChartTitle="GA Multiple Series Type Chart"
+                                          ChartSubTitle="Single Column Series"
+                                          IsRowColumnSwitched="{Binding seriesSwitched}"
+                                          SelectedItem="{Binding selectedItem, Mode=TwoWay}" >
+            <charts:GAMultipleTypeSeriesChart.Series>
+                <charts:ChartSeries
+                                SeriesTitle="{Binding scatterData.BatteryName}"
+                                DisplayMember="sn"
+                                ValueMember="voltage"
+                                ItemsSource="{Binding scatterData.Items}"
+                                DataPointType="charts:GAColumnPiece" />
+            </charts:GAMultipleTypeSeriesChart.Series>
+        </charts:GAMultipleTypeSeriesChart>
+
 
         <!--<charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"
                                              Width="400" Height="400"
@@ -35,9 +52,9 @@
             <charts:GAMultipleTypeSeriesChart.Series>
                 <charts:ChartSeries
                                 SeriesTitle="{Binding scatterData.BatteryName}"
-                                DisplayMember="date"
+                                DisplayMember="sn"
                                 ItemsSource="{Binding scatterData.Items}"
-                                ValueMember="amount" />
+                                ValueMember="Voltage" />
             </charts:GAMultipleTypeSeriesChart.Series>
         </charts:GAMultipleTypeSeriesChart>-->
 
