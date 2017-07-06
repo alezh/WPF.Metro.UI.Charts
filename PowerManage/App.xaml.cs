@@ -13,5 +13,9 @@ namespace PowerManage
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            GalaSoft.MvvmLight.Threading.Dispatcher­Helper.Initialize();
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace PowerManage.ViewModels
 {
     public class ViewModelLocator
     {
+        
         /// <summary>
         /// 初始化设置ViewModelLocator
         /// </summary>
@@ -36,5 +37,10 @@ namespace PowerManage.ViewModels
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+
+        public static void Cleanup()
+        {
+
+        }
     }
 }

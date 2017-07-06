@@ -38,6 +38,7 @@
                                 DataPointType="charts:GAColumnPiece" />
             </charts:GAMultipleTypeSeriesChart.Series>
         </charts:GAMultipleTypeSeriesChart>
+        <Button Content="提交" Margin="606,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Command="{Binding updateCommand}" />
 
 
         <!--<charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"

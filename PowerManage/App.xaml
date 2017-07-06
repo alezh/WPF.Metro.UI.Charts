@@ -9,12 +9,12 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-                <!-- Accent and AppTheme setting -->
+                <!-- Accent and AppTheme setting BaseDark BaseLight -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Cyan.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
                 <!--ChartTheme-->
                 <ResourceDictionary Source="Theme/Graphs.xaml"></ResourceDictionary>
-                <!--<ResourceDictionary Source="TestAppStyles.xaml"></ResourceDictionary>-->
+                <!--<ResourceDictionary Source="Theme/AppStyles.xaml"></ResourceDictionary>-->
             </ResourceDictionary.MergedDictionaries>
             <vm:ViewModelLocator xmlns:vm="clr-namespace:PowerManage.ViewModels" x:Key="Locator" />
         </ResourceDictionary>

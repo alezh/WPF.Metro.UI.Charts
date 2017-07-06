@@ -55,7 +55,7 @@
     <sys:String x:Key="TopNumberLocation">Top</sys:String>
     <sys:String x:Key="BottomNumberLocation">Bottom</sys:String>
 
-    <SolidColorBrush x:Key="ChartBackground" Color="#99FFFFFF" />
+    <SolidColorBrush x:Key="ChartBackground" Color="#00FFFFFF" />
     <SolidColorBrush x:Key="ChartForeground" Color="#FF666666" />
 
     <Style x:Key="BaseTextStyle" TargetType="TextBlock">
@@ -391,9 +391,9 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Border Grid.Row="0" x:Name="PART_ChartTitle" Visibility="{TemplateBinding ChartTitleVisibility}">
+                            <!--<Border Grid.Row="0" x:Name="PART_ChartTitle" Visibility="{TemplateBinding ChartTitleVisibility}">
                                 <local:ChartTitle Title="{TemplateBinding ChartTitle}" SubTitle="{TemplateBinding ChartSubTitle}" Style="{TemplateBinding ChartTitleStyle}" />
-                            </Border>
+                            </Border>-->
                             <Border x:Name="PART_ChartAreaBorder" Grid.Row="1">
                                 <local:ChartArea x:Name="PART_ChartArea" Foreground="{TemplateBinding Foreground}" Style="{TemplateBinding ChartAreaStyle}" ChartLegendItemStyle="{TemplateBinding ChartLegendItemStyle}"  ParentChart="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}" >
                                     <local:PlotterArea x:Name="PART_PlotterArea" Foreground="{TemplateBinding Foreground}" Style="{TemplateBinding PlotterAreaStyle}" ChartLegendItemStyle="{TemplateBinding ChartLegendItemStyle}" ParentChart="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}">

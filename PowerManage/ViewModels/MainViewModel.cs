@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using PowerManage.Models;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PowerManage.ViewModels
 {
@@ -62,21 +64,88 @@ namespace PowerManage.ViewModels
         #endregion
 
         public RelayCommand SwitchSeries { get; private set; }
+
+        public RelayCommand updateCommand { get; private set; }
         public MainViewModel()
         {
             SwitchSeries = new RelayCommand(switchSeries);
+            updateCommand = new RelayCommand(eachvol);
             seriesSwitched = false;
 
             scatterData = new Batteries { BatteryName = "sjdh" };
             scatterData.Items.Add(new Electricity("1", 390));
-            scatterData.Items.Add(new Electricity("2", 0));
-            scatterData.Items.Add(new Electricity("3", 0));
-            scatterData.Items.Add(new Electricity("5", 0));
-            scatterData.Items.Add(new Electricity("6", 0));
-            scatterData.Items.Add(new Electricity("7", 0));
-            scatterData.Items.Add(new Electricity("8", 0));
-            scatterData.Items.Add(new Electricity("9", 0));
+            scatterData.Items.Add(new Electricity("2", 50));
+            scatterData.Items.Add(new Electricity("3", 420));
+            scatterData.Items.Add(new Electricity("5", 400));
+            scatterData.Items.Add(new Electricity("6", 100));
+            scatterData.Items.Add(new Electricity("7", 300));
+            scatterData.Items.Add(new Electricity("8", 330));
+            scatterData.Items.Add(new Electricity("9", 360));
+            scatterData.Items.Add(new Electricity("10", 389));
+            scatterData.Items.Add(new Electricity("11", 390));
+            scatterData.Items.Add(new Electricity("12", 410));
+            scatterData.Items.Add(new Electricity("13", 400));
+            scatterData.Items.Add(new Electricity("14", 387));
+            scatterData.Items.Add(new Electricity("15", 388));
+            scatterData.Items.Add(new Electricity("16", 220));
+            scatterData.Items.Add(new Electricity("17", 150));
 
-        }        
+        }
+
+        private void update()
+        {
+           // GalaSoft.MvvmLight.Threading.DispatcherHelper
+            scatterData.Items[0].voltage = new System.Random().Next(100, 420);
+        }
+
+        private async Task AsyncAccess()
+        {
+            while (true)
+            {
+                var getDataListTask = new Task(() =>
+                {
+                    Thread.Sleep(5000);
+                    update();
+                });
+
+                getDataListTask.Start();
+
+                await getDataListTask;
+
+                //var fillModelTask = Task.Factory.StartNew(() =>
+                //{
+                //    update();
+                //}, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
+
+                //await fillModelTask;
+            }
+
+        }
+        public  void addChart()
+        {
+           
+        }
+
+        private void eachvol()
+        {
+            ThreadPool.QueueUserWorkItem(o =>
+              {
+                  // This is a background operation!
+                  while (true)
+                  {
+                      // Do something
+                      GalaSoft.MvvmLight.Threading.DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                        {
+                            // Dispatch back to the main thread
+                            //Status = string.Format("Loop # {0}",
+                            //   loopIndex++);
+                            scatterData.Items[0].voltage = new System.Random().Next(100, 420);
+                        });
+                      // Sleep for a while
+                      Thread.Sleep(500);
+                  }
+              });
+        }
+
     }
 }
