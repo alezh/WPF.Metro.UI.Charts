@@ -69,7 +69,7 @@ namespace PowerManage.ViewModels
         public MainViewModel()
         {
             SwitchSeries = new RelayCommand(switchSeries);
-            updateCommand = new RelayCommand(eachvol);
+            updateCommand = new RelayCommand(addChart);
             seriesSwitched = false;
 
             scatterData = new Batteries { BatteryName = "sjdh" };
@@ -98,34 +98,36 @@ namespace PowerManage.ViewModels
             scatterData.Items[0].voltage = new System.Random().Next(100, 420);
         }
 
+        /// <summary>
+        /// 异步
+        /// </summary>
+        /// <returns></returns>
         private async Task AsyncAccess()
         {
-            while (true)
-            {
+            
                 var getDataListTask = new Task(() =>
                 {
-                    Thread.Sleep(5000);
-                    update();
+                    while (true)
+                    {
+                        GalaSoft.MvvmLight.Threading.DispatcherHelper.CheckBeginInvokeOnUI(() =>
+                        {
+                            update();
+                        });
+
+                        Thread.Sleep(500);
+                    }
                 });
-
                 getDataListTask.Start();
-
                 await getDataListTask;
-
-                //var fillModelTask = Task.Factory.StartNew(() =>
-                //{
-                //    update();
-                //}, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
-
-                //await fillModelTask;
-            }
-
-        }
-        public  void addChart()
-        {
            
         }
-
+        public async void addChart()
+        {
+            await AsyncAccess();
+        }
+        /// <summary>
+        /// ThreadPool 进程池异步
+        /// </summary>
         private void eachvol()
         {
             ThreadPool.QueueUserWorkItem(o =>
@@ -139,7 +141,7 @@ namespace PowerManage.ViewModels
                             // Dispatch back to the main thread
                             //Status = string.Format("Loop # {0}",
                             //   loopIndex++);
-                            scatterData.Items[0].voltage = new System.Random().Next(100, 420);
+                            update();
                         });
                       // Sleep for a while
                       Thread.Sleep(500);
