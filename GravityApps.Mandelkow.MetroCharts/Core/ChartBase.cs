@@ -678,13 +678,24 @@
             return distance;
         }
 
-
+        /// <summary>
+        /// 计算Y轴最大值
+        /// </summary>
+        /// <param name="wert"></param>
+        /// <param name="bestMaxValue"></param>
+        /// <param name="bestDivisor"></param>
         private void GetBestValues(double wert, ref double bestMaxValue, ref int bestDivisor)
         {
             if (wert == 60.0)
             {
             }
-
+            //限制高度450 ,9条横线
+            if (wert > 0)
+            {
+                bestMaxValue = 450;
+                bestDivisor = 9;
+                return;
+            }
             string wertString = wert.ToString(System.Globalization.CultureInfo.InvariantCulture);
             double tensBelowNull = 1;
 
@@ -802,7 +813,7 @@
         /// </summary>
         protected void updateAllGridLines()
         {
-           // if (!isGAAlteredChart()) return;
+            //if (!isGAAlteredChart()) return;
 
             double largestAbsoluteDataPointValue = GridLinesMaxValue > Math.Abs(GridLinesMinValue) ? GridLinesMaxValue : Math.Abs(GridLinesMinValue); 
 

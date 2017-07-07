@@ -1901,7 +1901,7 @@
                         ItemsSource="{Binding Path=ParentChart.AllDataPoints, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                             <local:FadingListView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <local:EvenlyDistributedColumnsGrid NumberOfPointsPerGroup="{Binding ParentChart.MaxSeriesDataPointCountValue, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ChartArea}}}"  Margin="5,0" />
+                                    <local:EvenlyDistributedColumnsGrid NumberOfPointsPerGroup="{Binding ParentChart.MaxSeriesDataPointCountValue, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ChartArea}}}"  Margin="5,0" HorizontalAlignment="Left" />
                                 </ItemsPanelTemplate>
                             </local:FadingListView.ItemsPanel>   
                         </local:FadingListView>
@@ -1931,6 +1931,7 @@
                                     DataPointGroupIndex ="{Binding Path=DataPointGroupIndex}"
                                     DataPointIndex ="{Binding Path=DataPointIndex}"
                                     Margin="2,0"
+                        
                                     >
                     </local:GAMultiPiece>
                 </DataTemplate>

@@ -25,8 +25,6 @@
         <charts:GAMultipleTypeSeriesChart Margin="10" 
                                           Grid.Row="1"
                                           DataContext="{Binding ''}"
-                                          ChartTitle="GA Multiple Series Type Chart"
-                                          ChartSubTitle="Single Column Series"
                                           IsRowColumnSwitched="{Binding seriesSwitched}"
                                           SelectedItem="{Binding selectedItem, Mode=TwoWay}" >
             <charts:GAMultipleTypeSeriesChart.Series>
@@ -38,26 +36,7 @@
                                 DataPointType="charts:GAColumnPiece" />
             </charts:GAMultipleTypeSeriesChart.Series>
         </charts:GAMultipleTypeSeriesChart>
-        <Button Content="提交" Margin="606,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Command="{Binding updateCommand}" />
-
-
-        <!--<charts:GAMultipleTypeSeriesChart Style="{StaticResource MinimalChartStyle}"
-                                             Width="400" Height="400"
-                                          DataContext="{Binding ''}"
-                                          ChartTitle="GA Multiple Series Type Chart"
-                                          ChartSubTitle="Single Column Series"
-                                          IsRowColumnSwitched="{Binding seriesSwitched}"
-                                          HorizontalAlignment="Left" VerticalAlignment="Top"
-                                          SelectedItem="{Binding selectedItem, Mode=TwoWay}"
-                                          >
-            <charts:GAMultipleTypeSeriesChart.Series>
-                <charts:ChartSeries
-                                SeriesTitle="{Binding scatterData.BatteryName}"
-                                DisplayMember="sn"
-                                ItemsSource="{Binding scatterData.Items}"
-                                ValueMember="Voltage" />
-            </charts:GAMultipleTypeSeriesChart.Series>
-        </charts:GAMultipleTypeSeriesChart>-->
+        <Button Content="提交" Margin="606,52,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Command="{Binding updateCommand}" />       
 
     </Grid>
 

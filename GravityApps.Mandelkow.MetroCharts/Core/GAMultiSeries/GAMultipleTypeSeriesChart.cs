@@ -67,8 +67,11 @@
         {
             get
             {
-                
-                return MaxDataPointValue;
+                //if (MaxDataPointValue > 0)
+                //{
+                return 450;
+                //}
+                //return MaxDataPointValue;
             }
         }
 
@@ -93,5 +96,15 @@
                 return true;
             }
         }
+
+        //private static bool PointSwitch = true;
+        //private bool openPointValue
+        //{
+        //    get
+        //    {
+        //        PointSwitch = !PointSwitch;
+        //        return PointSwitch;
+        //    }
+        //}
     }
 }
