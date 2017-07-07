@@ -690,7 +690,7 @@
             {
             }
             //限制高度450 ,9条横线
-            if (wert > 0)
+            if (wert > 0 && wert<= 450)
             {
                 bestMaxValue = 450;
                 bestDivisor = 9;
