@@ -69,33 +69,33 @@ namespace PowerManage.ViewModels
         public MainViewModel()
         {
             SwitchSeries = new RelayCommand(switchSeries);
-            updateCommand = new RelayCommand(update);
+            updateCommand = new RelayCommand(AsyncAccess);
             seriesSwitched = false;
 
             scatterData = new Batteries { BatteryName = "sjdh" };
             scatterData.Items.Add(new Electricity("1", 390));
-            //scatterData.Items.Add(new Electricity("2", 420));
-            //scatterData.Items.Add(new Electricity("3", 420));
-            //scatterData.Items.Add(new Electricity("4", 400));
-            //scatterData.Items.Add(new Electricity("5", 100));
-            //scatterData.Items.Add(new Electricity("6", 300));
-            //scatterData.Items.Add(new Electricity("7", 330));
-            //scatterData.Items.Add(new Electricity("8", 360));
-            //scatterData.Items.Add(new Electricity("9", 389));
-            //scatterData.Items.Add(new Electricity("10", 390));
-            //scatterData.Items.Add(new Electricity("11", 410));
-            //scatterData.Items.Add(new Electricity("12", 400));
-            //scatterData.Items.Add(new Electricity("13", 387));
-            //scatterData.Items.Add(new Electricity("14", 388));
-            //scatterData.Items.Add(new Electricity("15", 220));
-            //scatterData.Items.Add(new Electricity("16", 150));
+            scatterData.Items.Add(new Electricity("2", 420));
+            scatterData.Items.Add(new Electricity("3", 420));
+            scatterData.Items.Add(new Electricity("4", 400));
+            scatterData.Items.Add(new Electricity("5", 100));
+            scatterData.Items.Add(new Electricity("6", 300));
+            scatterData.Items.Add(new Electricity("7", 330));
+            scatterData.Items.Add(new Electricity("8", 360));
+            scatterData.Items.Add(new Electricity("9", 389));
+            scatterData.Items.Add(new Electricity("10", 390));
+            scatterData.Items.Add(new Electricity("11", 410));
+            scatterData.Items.Add(new Electricity("12", 400));
+            scatterData.Items.Add(new Electricity("13", 387));
+            scatterData.Items.Add(new Electricity("14", 388));
+            scatterData.Items.Add(new Electricity("15", 220));
+            scatterData.Items.Add(new Electricity("16", 150));
 
         }
 
         private void update()
         {
-            int row = new System.Random().Next(0, 15);
-            scatterData.Items[0].voltage = new System.Random().Next(0, 420);
+            int row = new System.Random().Next(0, 16);
+            scatterData.Items[row].voltage = new System.Random().Next(0, 420);
         }
 
         public void delete()
@@ -124,7 +124,7 @@ namespace PowerManage.ViewModels
             await getDataListTask;           
         }
 
-        public async void addChart()
+        public void addChart()
         {
             
         }

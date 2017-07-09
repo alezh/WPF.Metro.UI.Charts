@@ -73,6 +73,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Batteries.cs" />
     <Compile Include="Models\Electricity.cs" />
+    <Compile Include="SerialPort\InitSerialPort.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
